@@ -7,6 +7,8 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 
 const HirewireRegistration = () => {
+  console.log(">>> HirewireRegistration MOUNTED at", window.location.pathname);
+
   const [formData, setFormData] = useState({
     name: '',
     year: '',
@@ -16,7 +18,6 @@ const HirewireRegistration = () => {
     whatsapp: '',
     email: '',
     contact: '',
-    resume: null as File | null,
     message: ''
   });
 
@@ -30,13 +31,6 @@ const HirewireRegistration = () => {
     }));
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0] || null;
-    setFormData(prev => ({
-      ...prev,
-      resume: file
-    }));
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -58,10 +52,6 @@ const HirewireRegistration = () => {
       formDataToSend.append('contact', formData.contact);
       formDataToSend.append('message', formData.message);
 
-      // Add resume file if exists
-      if (formData.resume) {
-        formDataToSend.append('resume', formData.resume);
-      }
 
       // Add subject for email
       formDataToSend.append('subject', 'HireWire 2025 Registration');
@@ -73,8 +63,9 @@ const HirewireRegistration = () => {
       });
 
       const data = await response.json();
+      console.log('API Response:', data);
 
-      if (data.success) {
+      if (response.ok && data.success) {
         alert('Registration submitted successfully! We will contact you soon.');
         // Reset form
         setFormData({
@@ -86,15 +77,20 @@ const HirewireRegistration = () => {
           whatsapp: '',
           email: '',
           contact: '',
-          resume: null,
           message: ''
         });
       } else {
-        alert('Failed to submit registration. Please try again.');
+        const errorMessage = data.message || `HTTP ${response.status}: ${response.statusText}`;
+        alert(`Submission failed: ${errorMessage}`);
+        console.error('Submission failed with response:', data);
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert('An error occurred. Please try again later.');
+      if (error instanceof Error) {
+        alert(`An error occurred: ${error.message}. Please try again later.`);
+      } else {
+        alert('An unexpected error occurred. Please try again later.');
+      }
     }
 
     setIsSubmitting(false);
@@ -313,39 +309,6 @@ const HirewireRegistration = () => {
                   </div>
                 </div>
 
-                {/* Resume Upload */}
-                <div className="space-y-6">
-                  <h3 className="text-xl font-semibold flex items-center space-x-2">
-                    <Upload className="h-5 w-5 text-primary" />
-                    <span>Resume Upload</span>
-                  </h3>
-
-                  <div>
-                    <label htmlFor="resume" className="block text-sm font-medium mb-2">
-                      Upload Resume (PDF, DOC, DOCX) *
-                    </label>
-                    <div className="relative">
-                      <input
-                        id="resume"
-                        name="resume"
-                        type="file"
-                        accept=".pdf,.doc,.docx"
-                        required
-                        onChange={handleFileChange}
-                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                      />
-                      <div className="bg-glass-card border border-white/10 rounded-lg p-4 text-center hover:border-primary transition-colors">
-                        <Upload className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
-                        <p className="text-sm text-muted-foreground">
-                          {formData.resume ? formData.resume.name : 'Click to upload your resume'}
-                        </p>
-                        <p className="text-xs text-muted-foreground mt-1">
-                          PDF, DOC, DOCX up to 5MB
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
 
                 {/* Additional Message */}
                 <div className="space-y-6">
