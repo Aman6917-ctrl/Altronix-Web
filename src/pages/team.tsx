@@ -31,7 +31,7 @@ const teamMembers: Member[] = [
     role: "Technical Lead",
     image: "/radhika.png",
     description:
-      "Radhika Shukla is the Technical Lead at Altonix and currently pursuing her 4th year in Engineering. With a strong passion for technology and innovation, she thrives on exploring cutting-edge solutions and driving impactful projects. Her dedication to learning, problem-solving, and leadership reflects her vision of leveraging technology to create meaningful change.",
+      "Radhika Shukla is the Technical Lead at Altronix and a 4th-year Engineering student. Passionate about technology and innovation, she enjoys exploring solutions, leading projects, and driving meaningful impact through her work.",
     stats: [
       { value: "5+", label: "Years Experience", color: "primary" },
       { value: "50+", label: "Projects Built", color: "secondary" },
@@ -51,7 +51,7 @@ const teamMembers: Member[] = [
     role: "Technical Lead",
     image: "/mithanshu.jpg",
     description:
-      "Mithanshu Hedau is the Technical Lead at Altonix and a 4th-year Engineering student with a deep passion for technology and innovation. Known for his problem-solving mindset and dedication to continuous learning, he actively drives technical initiatives and projects. With a strong interest in exploring emerging technologies, he strives to build impactful solutions that create real-world value.",
+      "Mithanshu Hedau is the Technical Lead at Altronix and a 4th-year Engineering student. Passionate about technology and innovation, he drives technical initiatives and projects, striving to build impactful real-world solutions.",
     stats: [
       { value: "3+", label: "Years Experience", color: "primary" },
       { value: "30+", label: "Projects Built", color: "secondary" },
@@ -69,9 +69,9 @@ const teamMembers: Member[] = [
   {
     name: "Meharsh Chandure",
     role: "Technical Lead",
-    image: "/meharsh.jpg",
+    image: "/meharsh-up.png",
     description:
-      "Meharsh Chandure is the Technical Lead at Altonix and currently in his 4th year of Engineering. Passionate about technology and innovation, he excels in driving technical initiatives and exploring modern solutions to complex problems. With a commitment to continuous learning and leadership, he aims to leverage his skills to build impactful projects and contribute meaningfully to the tech community.",
+      "Meharsh Chandure is the Technical Lead at Altronix and a 4th-year Engineering student. Passionate about technology and innovation, he leads initiatives and explores modern solutions to create impactful projects.",
     stats: [
       { value: "2+", label: "Years Experience", color: "primary" },
       { value: "20+", label: "Projects Built", color: "secondary" },
@@ -94,7 +94,7 @@ const developerMembers: Member[] = [
     role: "Joint Technical Head",
     image: "/aman.jpg",
     description:
-      "Aman Verma is the Joint Technical Head at Altonix and a 3rd-year Engineering student with a strong passion for technology and innovation. He is dedicated to exploring new tools, frameworks, and ideas while contributing to impactful technical projects. With his problem-solving approach and enthusiasm for learning, he plays a key role in driving Altonix’s technical initiatives forward.",
+      "Aman Verma is the Joint Technical Head at Altonix and a 3rd-year Engineering student. Passionate about technology and innovation, he contributes to impactful projects and plays a key role in driving technical initiatives.",
     stats: [
       { value: "2+", label: "Years Experience", color: "primary" },
       { value: "20+", label: "Projects Built", color: "secondary" },
@@ -113,7 +113,7 @@ const developerMembers: Member[] = [
     role: "Joint Technical Head",
     image: "/shreyansh.jpg",
     description:
-      "Shreyansh Bhagwat is the Joint Technical Head at Altonix and currently a 3rd-year Engineering student. Passionate about technology and problem-solving, he is driven to explore innovative solutions and contribute to impactful projects. With his curiosity and commitment to learning, he actively supports Altonix’s technical vision while honing his leadership and technical skills.",
+      "Shreyansh Bhagwat is the Joint Technical Head at Altonix and a 3rd-year Engineering student. Passionate about technology and problem-solving, he explores innovative solutions and contributes to impactful projects.",
     stats: [
       { value: "1+", label: "Years Experience", color: "primary" },
       { value: "10+", label: "Projects Built", color: "secondary" },
@@ -244,3 +244,4 @@ const Developer = () => {
 };
 
 export default Developer;
+
