@@ -76,11 +76,6 @@ const Vision = () => {
               </div>
             </div>
 
-            <Button 
-              className="mt-12 bg-primary hover:bg-primary-glow glow-primary px-8 py-6 text-lg font-semibold rounded-2xl border border-primary/20"
-            >
-              TRY IT NOW
-            </Button>
           </div>
 
           {/* Right Content - Enhanced Orbital Diagram */}
