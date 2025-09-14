@@ -39,9 +39,13 @@ const App = () => (
           <Route path="/team" element={<Team />} />
           <Route path="/hirewire-registration" element={<HirewireRegistration />} />
 
-          {/* Explicit redirect if someone directly hits /index.html */}
+          {/* ✅ Debug route to test deep linking */}
+          <Route path="/__deeplink-test" element={<div style={{ padding: 40 }}>DEEPLINK TEST OK</div>} />
+
+          {/* ✅ Explicit redirect if someone hits /index.html */}
           <Route path="/index.html" element={<Navigate to="/" replace />} />
 
+          {/* Catch-all 404 */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
@@ -50,4 +54,5 @@ const App = () => (
 );
 
 export default App;
+
 
