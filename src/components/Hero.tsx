@@ -156,7 +156,7 @@ const Hero = () => {
             Altronix
           </span>
           <span className="block text-2xl md:text-4xl lg:text-5xl text-muted-foreground font-bold">
-            the AI and Machine Learning hub at RBU driving innovation collaboration and excellence in {' '}
+            The AI and Machine Learning hub at RBU driving innovation collaboration and excellence in {' '}
             <span className="text-gradient font-semibold underline decoration-primary/50">
               Technology
             </span>
