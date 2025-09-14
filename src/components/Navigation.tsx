@@ -1,17 +1,30 @@
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Link, useLocation } from 'react-router-dom'; // <-- Add this import
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleScrollOrNavigate = (hash: string) => {
+    if (location.pathname === "/") {
+      // Already on homepage → scroll to section
+      const el = document.querySelector(hash);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      // Not on homepage → navigate home, then scroll after render
+      navigate("/" + hash);
+    }
+    setIsOpen(false);
+  };
 
   const navItems = [
-    { name: 'Home', href: location.pathname === '/' ? '#home' : '/#home' },
-    { name: 'Team', href: '/team' },
-    { name: 'About', href: location.pathname === '/' ? '#vision' : '/#vision' },
-    { name: 'Contact', href: location.pathname === '/' ? '#contact' : '/#contact' },
+    { name: "Home", action: () => navigate("/") },
+    { name: "Team", action: () => navigate("/team") },
+    { name: "About", action: () => handleScrollOrNavigate("#vision") },
+    { name: "Contact", action: () => handleScrollOrNavigate("#contact") },
   ];
 
   return (
@@ -19,37 +32,23 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between w-full h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <img
-              src="/download.png"
-              alt="Download"
-              className="h-12 w-12"
-            />
+          <div className="flex items-center space-x-2 cursor-pointer" onClick={() => navigate("/")}>
+            <img src="/download.png" alt="Download" className="h-12 w-12" />
             <span className="text-3xl font-bold text-gradient">Altronix</span>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex flex-1 justify-center">
             <div className="flex items-baseline space-x-8">
-              {navItems.map((item) =>
-                item.href.startsWith('/') ? (
-                  <Link
-                    key={item.name}
-                    to={item.href}
-                    className="px-3 py-2 text-base font-semibold text-muted-foreground hover:text-primary transition-colors duration-200"
-                  >
-                    {item.name}
-                  </Link>
-                ) : (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className="px-3 py-2 text-base font-semibold text-muted-foreground hover:text-primary transition-colors duration-200"
-                  >
-                    {item.name}
-                  </a>
-                )
-              )}
+              {navItems.map((item) => (
+                <button
+                  key={item.name}
+                  onClick={item.action}
+                  className="px-3 py-2 text-base font-semibold text-muted-foreground hover:text-primary transition-colors duration-200"
+                >
+                  {item.name}
+                </button>
+              ))}
             </div>
           </div>
 
@@ -80,27 +79,15 @@ const Navigation = () => {
       {isOpen && (
         <div className="md:hidden glass border-t border-white/10">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {navItems.map((item) =>
-              item.href.startsWith('/') ? (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className="block px-3 py-2 text-lg font-semibold text-muted-foreground hover:text-primary transition-colors duration-200"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ) : (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="block px-3 py-2 text-lg font-semibold text-muted-foreground hover:text-primary transition-colors duration-200"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.name}
-                </a>
-              )
-            )}
+            {navItems.map((item) => (
+              <button
+                key={item.name}
+                onClick={item.action}
+                className="block w-full text-left px-3 py-2 text-lg font-semibold text-muted-foreground hover:text-primary transition-colors duration-200"
+              >
+                {item.name}
+              </button>
+            ))}
             <div className="px-3 py-2">
               <Link to="/hirewire-registration" onClick={() => setIsOpen(false)}>
                 <Button variant="default" className="w-full bg-primary hover:bg-primary-glow glow-primary">
