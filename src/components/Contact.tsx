@@ -14,7 +14,7 @@ const Contact = () => {
     {
       icon: MapPin,
       title: 'Visit Us',
-      details: 'RBU-Digital Tower gitikhadan-440013',
+      details: 'RBU',
       action: '#'
     }
   ];
