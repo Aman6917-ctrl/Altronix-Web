@@ -37,53 +37,87 @@ const HirewireRegistration = () => {
     setIsSubmitting(true);
 
     try {
-      const formDataToSend = new FormData();
-
-      // Add form fields to FormData
-      formDataToSend.append('access_key', 'c15fc6bd-bcce-459e-b8d5-8ac9df48d5eb');
-      formDataToSend.append('name', formData.name);
-      formDataToSend.append('year', formData.year);
-      formDataToSend.append('section', formData.section);
       // Handle branch field - use custom branch if "Other" is selected
       const finalBranch = formData.branch === 'Other' ? formData.customBranch : formData.branch;
-      formDataToSend.append('branch', finalBranch);
-      formDataToSend.append('whatsapp', formData.whatsapp);
-      formDataToSend.append('email', formData.email);
-      formDataToSend.append('contact', formData.contact);
-      formDataToSend.append('message', formData.message);
 
-
-      // Add subject for email
-      formDataToSend.append('subject', 'HireWire 2025 Registration');
-      formDataToSend.append('from_name', 'HireWire Registration System');
-
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: formDataToSend
+      // Try GET request with URL parameters (more CORS-friendly)
+      const params = new URLSearchParams({
+        fullName: formData.name,
+        year: formData.year,
+        section: formData.section,
+        branch: finalBranch,
+        whatsapp: formData.whatsapp,
+        email: formData.email,
+        contact: formData.contact,
+        additionalInfo: formData.message,
+        timestamp: new Date().toISOString()
       });
 
-      const data = await response.json();
-      console.log('API Response:', data);
+      const getUrl = `https://script.google.com/macros/s/AKfycbzYIOnzIYD3X1Q3YWH2AIzJwWQ0HL_cLVkwXToaFzGobTx2EO6Q7hlTh1tOtG7pGxxJ/exec?${params.toString()}`;
 
-      if (response.ok && data.success) {
-        alert('Registration submitted successfully! We will contact you soon.');
-        // Reset form
-        setFormData({
-          name: '',
-          year: '',
-          section: '',
-          branch: '',
-          customBranch: '',
-          whatsapp: '',
-          email: '',
-          contact: '',
-          message: ''
+      console.log('Trying GET request with URL:', getUrl);
+
+      try {
+        console.log('Sending GET request to:', getUrl);
+        const response = await fetch(getUrl, {
+          method: 'GET',
+          mode: 'no-cors' // This helps with CORS issues
         });
-      } else {
-        const errorMessage = data.message || `HTTP ${response.status}: ${response.statusText}`;
-        alert(`Submission failed: ${errorMessage}`);
-        console.error('Submission failed with response:', data);
+
+        console.log('GET request completed (no-cors mode)');
+        console.log('Note: With no-cors mode, we cannot read the response');
+        console.log('✅ Form submitted');
+        alert('Registration submitted! ');
+
+      } catch (getError) {
+        console.log('GET request failed, trying POST...');
+
+        // Fallback to POST if GET fails
+        const submissionData = {
+          fullName: formData.name,
+          year: formData.year,
+          section: formData.section,
+          branch: finalBranch,
+          whatsapp: formData.whatsapp,
+          email: formData.email,
+          contact: formData.contact,
+          additionalInfo: formData.message,
+          timestamp: new Date().toISOString()
+        };
+
+        console.log('Trying POST request with data:', submissionData);
+
+        const postResponse = await fetch('https://script.google.com/macros/s/AKfycbzYIOnzIYD3X1Q3YWH2AIzJwWQ0HL_cLVkwXToaFzGobTx2EO6Q7hlTh1tOtG7pGxxJ/exec', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(submissionData)
+        });
+
+        console.log('POST Response status:', postResponse.status);
+
+        if (postResponse.ok) {
+          console.log('✅ Form submitted successfully via POST');
+          alert('Registration submitted successfully! We will contact you soon.');
+        } else {
+          console.error('❌ POST request failed with status:', postResponse.status);
+          alert('Submission failed. Please try again.');
+        }
       }
+      // Reset form
+      setFormData({
+        name: '',
+        year: '',
+        section: '',
+        branch: '',
+        customBranch: '',
+        whatsapp: '',
+        email: '',
+        contact: '',
+        message: ''
+      });
+
     } catch (error) {
       console.error('Error submitting form:', error);
       if (error instanceof Error) {
