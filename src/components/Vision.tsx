@@ -83,7 +83,7 @@ const Vision = () => {
             {/* Central Hub */}
             <div className="relative z-20 w-32 h-32 glass rounded-full flex items-center justify-center border-2 border-primary glow-primary">
               <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center">
-              <img src={download} alt="Central Hub" className="h-16 w-16 text-primary" />
+                <img src={download} alt="Central Hub" className="h-12 w-auto object-contain" />
               </div>
             </div>
 

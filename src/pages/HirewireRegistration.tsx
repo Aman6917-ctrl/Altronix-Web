@@ -7,7 +7,7 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 
 const HirewireRegistration = () => {
-  console.log(">>> HirewireRegistration MOUNTED at", window.location.pathname);
+  console.log(">>> HirezwireRegistration MOUNTED at", window.location.pathname);
 
   const [formData, setFormData] = useState({
     name: '',

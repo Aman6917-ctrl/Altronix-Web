@@ -11,6 +11,7 @@ import Gallery from "./pages/Gallery";
 import Achievements from "./pages/Achievements";
 import BranchCupWinners from "./pages/BranchCupWinners";
 import AntiRaggingWeek from "./pages/AntiRaggingWeek";
+import AltronixCommittee from "./pages/AltronixCommittee";
 import HirewireRegistration from "./pages/HirewireRegistration";
 
 const queryClient = new QueryClient();
@@ -41,6 +42,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/team" element={<Team />} />
+          <Route path="/committee" element={<AltronixCommittee />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/achievements" element={<Achievements />} />
           <Route path="/branch-cup-winners" element={<BranchCupWinners />} />

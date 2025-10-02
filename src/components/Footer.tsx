@@ -12,7 +12,10 @@ const Footer = () => {
 
   const quickLinks = [
     { name: 'Home', href: '/' },
-    { name: 'Team', href: '/team' },
+    { name: 'Technical Team', href: '/team' },
+    { name: 'Committee', href: '/committee' },
+    { name: 'Gallery', href: '/gallery' },
+    { name: 'Achievements', href: '/achievements' },
     { name: 'About', href: location.pathname === '/' ? '#vision' : '/#vision' },
     { name: 'Contact', href: location.pathname === '/' ? '#contact' : '/#contact' }
   ];
@@ -28,11 +31,11 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="lg:col-span-1 space-y-6">
             <div className="flex items-center space-x-3">
-              <div className="relative">
+              <div className="relative h-12 w-auto flex items-center">
                 <img
                   src="/download.png"
                   alt="Altronix Logo"
-                  className="h-12 w-12"
+                  className="h-12 w-auto object-contain"
                 />
               </div>
               <span className="text-3xl font-bold text-gradient">Altronix</span>

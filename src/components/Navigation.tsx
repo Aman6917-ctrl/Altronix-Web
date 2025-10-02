@@ -1,6 +1,12 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Navigation = () => {
@@ -22,11 +28,15 @@ const Navigation = () => {
 
   const navItems = [
     { name: "Home", action: () => navigate("/") },
-    { name: "Team", action: () => navigate("/team") },
     { name: "Gallery", action: () => navigate("/gallery") },
     { name: "Achievements", action: () => navigate("/achievements") },
     { name: "About", action: () => handleScrollOrNavigate("#vision") },
     { name: "Contact", action: () => handleScrollOrNavigate("#contact") },
+  ];
+
+  const teamOptions = [
+    { name: "Technical Team", action: () => navigate("/team") },
+    { name: "Altronix Committee", action: () => navigate("/committee") },
   ];
 
   return (
@@ -34,8 +44,14 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between w-full h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-2 cursor-pointer" onClick={() => navigate("/")}>
-            <img src="/download.png" alt="Download" className="h-12 w-12" />
+          <div className="flex items-center space-x-3 cursor-pointer" onClick={() => navigate("/")}>
+            <div className="h-12 w-auto flex items-center">
+              <img 
+                src="/download.png" 
+                alt="Altronix Logo" 
+                className="h-12 w-auto object-contain" 
+              />
+            </div>
             <span className="text-3xl font-bold text-gradient">Altronix</span>
           </div>
 
@@ -51,6 +67,27 @@ const Navigation = () => {
                   {item.name}
                 </button>
               ))}
+              
+              {/* Team Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <button className="flex items-center space-x-1 px-3 py-2 text-base font-semibold text-muted-foreground hover:text-primary transition-colors duration-200">
+                    <span>Team</span>
+                    <ChevronDown className="h-4 w-4" />
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="glass border-white/10 bg-background/95 backdrop-blur-sm">
+                  {teamOptions.map((option) => (
+                    <DropdownMenuItem
+                      key={option.name}
+                      onClick={option.action}
+                      className="text-muted-foreground hover:text-primary hover:bg-primary/10 cursor-pointer"
+                    >
+                      {option.name}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           </div>
 
@@ -90,6 +127,21 @@ const Navigation = () => {
                 {item.name}
               </button>
             ))}
+            
+            {/* Team options in mobile */}
+            <div className="border-l-2 border-primary/20 ml-3 pl-3">
+              <div className="text-sm font-medium text-primary mb-2 px-3">Team</div>
+              {teamOptions.map((option) => (
+                <button
+                  key={option.name}
+                  onClick={option.action}
+                  className="block w-full text-left px-3 py-2 text-base text-muted-foreground hover:text-primary transition-colors duration-200"
+                >
+                  {option.name}
+                </button>
+              ))}
+            </div>
+            
             <div className="px-3 py-2">
               <Link to="/hirewire-registration" onClick={() => setIsOpen(false)}>
                 <Button variant="default" className="w-full bg-primary hover:bg-primary-glow glow-primary">
