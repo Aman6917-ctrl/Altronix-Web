@@ -93,9 +93,9 @@ const Navigation = () => {
 
           {/* CTA Button */}
           <div className="hidden md:flex justify-end">
-            <Link to="/hirewire-registration">
+            <Link to="/aipl-registration">
               <Button variant="default" className="bg-primary hover:bg-primary-glow glow-primary">
-                Register
+                Register for AIPL
               </Button>
             </Link>
           </div>
@@ -143,9 +143,9 @@ const Navigation = () => {
             </div>
             
             <div className="px-3 py-2">
-              <Link to="/hirewire-registration" onClick={() => setIsOpen(false)}>
+              <Link to="/aipl-registration" onClick={() => setIsOpen(false)}>
                 <Button variant="default" className="w-full bg-primary hover:bg-primary-glow glow-primary">
-                  Register
+                  Register for AIPL
                 </Button>
               </Link>
             </div>

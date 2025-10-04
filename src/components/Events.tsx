@@ -7,29 +7,29 @@ const Events = () => {
     {
       title: 'Hirewire',
       subtitle: 'The Ultimate AI Creativity Challenge!',
-      description:  'HireWire is a placement simulator conducted by the AIML branch.The event includes resume building sessions, mock placement processes, and senior guidance.Students experience multiple real-world hiring rounds such as coding, group discussion, technical, and HR.HireWire helps participants gain practical exposure, confidence, and readiness for placements.' ,
+      description:  'HireWire was a placement simulator conducted by the AIML branch. The event included resume building sessions, mock placement processes, and senior guidance. Students experienced multiple real-world hiring rounds such as coding, group discussion, technical, and HR. HireWire helped participants gain practical exposure, confidence, and readiness for placements.' ,
       icon: Sparkles,
       color: 'primary',
-      status: 'register',
+      status: 'completed',
       gradient: 'from-primary/20 to-primary/5'
+    },
+    {
+      title: 'AIPL',
+      subtitle: 'From Auction Tables to Trophy Tales - That\'s AIPL!',
+      description: 'AIPL (Artificial Intelligence Premier League) is an exciting cricket tournament organized by the AIML branch. Experience the thrill of competitive cricket with player auctions, team formations, and championship matches. Register now to showcase your cricket skills and be part of this premier sporting event where talent meets teamwork on the field.',
+      icon: Trophy,
+      color: 'accent',
+      status: 'register',
+      gradient: 'from-accent/20 to-accent/5'
     },
     {
       title: 'Safar',
       subtitle: 'Play. Compete. Celebrate.',
-      description: 'Safar is a flagship sports and games event organized by the AIML branch.It features a wide range of outdoor sports like cricket, football, and athletics, along with indoor games such as chess, carrom, and e-sports.The event is designed to encourage teamwork, competitive spirit, and active participation among students.Safar creates an engaging platform where talent, energy, and camaraderie come together in a festive atmosphere.',
+      description: 'Safar is a flagship sports and games event organized by the AIML branch. It features a wide range of outdoor sports like cricket, football, and athletics, along with indoor games such as chess, carrom, and e-sports. The event is designed to encourage teamwork, competitive spirit, and active participation among students. Safar creates an engaging platform where talent, energy, and camaraderie come together in a festive atmosphere.',
       icon: Waves,
       color: 'secondary',
       status: 'coming-soon',
       gradient: 'from-secondary/20 to-secondary/5'
-    },
-    {
-      title: 'AIPL',
-      subtitle: 'From Auction Tables to Trophy Tales – That’s AIPL!',
-      description: 'HireWire is a placement simulator conducted by the AIML branch.The event includes resume building sessions, mock placement processes, and senior guidance.Students experience multiple real-world hiring rounds such as coding, group discussion, technical, and HR.HireWire helps participants gain practical exposure, confidence, and readiness for placements.',
-      icon: Trophy,
-      color: 'accent',
-      status: 'coming-soon',
-      gradient: 'from-accent/20 to-accent/5'
     }
   ];
 
@@ -52,12 +52,12 @@ const Events = () => {
           
           <h2 className="text-5xl lg:text-6xl font-bold mb-6">
             <span className="text-gradient bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-              Upcoming Events !
+              Our Events
             </span>
           </h2>
           
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Participate in cutting-edge competitions and collaborative learning experiences 
+            Join our cutting-edge competitions and collaborative learning experiences 
             that push the boundaries of AI and machine learning innovation.
           </p>
         </div>
@@ -88,17 +88,25 @@ const Events = () => {
 
                 {/* Action Button */}
                 {event.status === 'register' ? (
-                  <Link to="/hirewire-registration" className="block">
+                  <Link to={event.title === 'AIPL' ? '/aipl-registration' : '/hirewire-registration'} className="block">
                     <Button
                       className="w-full bg-primary hover:bg-primary-glow text-primary-foreground rounded-xl py-6 text-lg font-semibold group/btn"
                     >
-                      REGISTER
+                      REGISTER NOW
                       <ArrowRight className="ml-2 h-5 w-5 group-hover/btn:translate-x-1 transition-transform duration-200" />
                     </Button>
                   </Link>
+                ) : event.status === 'completed' ? (
+                  <Button
+                    className="w-full bg-green-600 hover:bg-green-700 text-white rounded-xl py-6 text-lg font-semibold group/btn cursor-default"
+                    disabled
+                  >
+                    EVENT COMPLETED ✓
+                  </Button>
                 ) : (
                   <Button
                     className="w-full bg-muted hover:bg-muted/80 text-foreground rounded-xl py-6 text-lg font-semibold group/btn"
+                    disabled
                   >
                     COMING SOON
                     <ArrowRight className="ml-2 h-5 w-5 group-hover/btn:translate-x-1 transition-transform duration-200" />
