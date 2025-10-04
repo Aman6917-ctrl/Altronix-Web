@@ -18,7 +18,7 @@ const AltronixCommittee = () => {
   // Actual committee members data from JSON
   const committeeMembers: CommitteeMember[] = [
     // 4th Year Members
-    { name: "Akshay Chandak", post: "President", photo: "/commiteeimages/AkshayC.png", year: "4th Year" },
+    { name: "Akshay Chandak", post: "President", photo: "/commiteeimages/AkshayC.jpg", year: "4th Year" },
     { name: "Divya Ruthiya", post: "Vice President", photo: "/commiteeimages/DivyaR.jpg", year: "3rd Year" },
     { name: "Arya Asutkar", post: "Secretary", photo: "/commiteeimages/AryaA.jpg", year: "4th Year" },
     { name: "Shanmukh Pardhi", post: "Treasurer", photo: "/commiteeimages/ShanmukhP.jpg", year: "4th Year" },
@@ -30,7 +30,7 @@ const AltronixCommittee = () => {
     { name: "Anish Patankar", post: "Sports Secretary", photo: "/commiteeimages/AnishP.jpg", year: "4th Year" },
     { name: "Aman Patne", post: "Sports Secretary", photo: "/commiteeimages/AmanP.png", year: "4th Year" },
     { name: "Pragati Borkar", post: "Event Manager", photo: "/commiteeimages/PragatiB.jpg", year: "4th Year" },
-    { name: "Sumedh Khangan", post: "Event Manager", photo: "/commiteeimages/SumedhS.jpeg", year: "4th Year" },
+    { name: "Sumedh Khangan", post: "Event Manager", photo: "/commiteeimages/SumedhK.jpg", year: "4th Year" },
     { name: "Saket Karwa", post: "Event Manager", photo: "/commiteeimages/SaketK.jpg", year: "4th Year" },
     
     // 3rd Year Members
@@ -49,7 +49,7 @@ const AltronixCommittee = () => {
     { name: "Chaitali Nadekar", post: "Creative Lead", photo: "/commiteeimages/ChaitaliN.jpg", year: "3rd Year" },
     { name: "Suhani Paliwal", post: "Publicity Lead", photo: "/commiteeimages/SuhaniP.jpg", year: "3rd Year" },
     { name: "Vedant Umap", post: "Publicity Lead", photo: "/commiteeimages/VedantU.jpg", year: "3rd Year" },
-    { name: "Aditi Gupta", post: "Publicity Lead", photo: "/commiteeimages/AditiG.jpeg", year: "3rd Year" },
+    { name: "Aditi Gupta", post: "Publicity Lead", photo: "/commiteeimages/AditiG.jpg", year: "3rd Year" },
     { name: "Viraj Yawle", post: "Media Lead", photo: "/commiteeimages/VirajY.jpg", year: "3rd Year" },
     { name: "Anjali Jaikalyani", post: "Media Lead", photo: "/commiteeimages/AnjaliJ.jpg", year: "3rd Year" },
     { name: "Roshni Chawla", post: "Media Lead", photo: "/commiteeimages/RoshniC.jpg", year: "3rd Year" },
