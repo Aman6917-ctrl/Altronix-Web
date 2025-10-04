@@ -150,10 +150,7 @@ const Gallery = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button 
                   onClick={() => {
-                    const element = document.querySelector('#contact');
-                    if (element) {
-                      window.location.href = '/#contact';
-                    }
+                    window.location.href = '/#contact';
                   }}
                   className="px-8 py-4 bg-primary hover:bg-primary-glow text-primary-foreground font-semibold rounded-lg transition-all duration-300 glow-primary hover:scale-105"
                 >

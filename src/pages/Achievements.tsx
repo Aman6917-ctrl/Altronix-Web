@@ -203,17 +203,16 @@ const Achievements = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button 
-                  onClick={() => navigate('/team')}
+                  onClick={() => {
+                    window.location.href = '/#contact';
+                  }}
                   className="px-8 py-4 bg-primary hover:bg-primary-glow text-primary-foreground font-semibold rounded-lg transition-all duration-300 glow-primary hover:scale-105"
                 >
                   Join Our Team
                 </Button>
                 <Button 
                   onClick={() => {
-                    const element = document.querySelector('#contact');
-                    if (element) {
-                      window.location.href = '/#contact';
-                    }
+                    window.location.href = '/#events';
                   }}
                   variant="outline"
                   className="px-8 py-4 border border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:glow-primary"

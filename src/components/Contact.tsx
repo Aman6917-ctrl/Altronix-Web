@@ -77,10 +77,6 @@ const Contact = () => {
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
             Ready to <span className="text-gradient">Start Your AI Journey</span>?
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Let's discuss how we can transform your business with intelligent AI solutions. 
-            Our experts are ready to help you unlock new possibilities.
-          </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
